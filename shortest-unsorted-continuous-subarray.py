@@ -11,6 +11,8 @@ class Solution:
         while j > 0 and nums[j - 1] <= nums[j]:
             j -= 1
         if i >= j: return 0
+        while nums[j] < nums[i]:
+            j += 1
         min_ij,max_ij = min(nums[i:j]),max(nums[i:j])
         while i > 0 and min_ij < nums[i-1]:
             min_ij = min(min_ij, nums[i-1])
@@ -20,8 +22,8 @@ class Solution:
             j += 1
         return j - i
 
-test = [2, 6, 4, 8, 10, 9, 15]
-test = [1,2,1]
-# test = [2,6,5,9]
-test = [2,3,3,2,4]
+# test = [2, 6, 4, 8, 10, 9, 15] # 5
+# test = [1,2,1] # 2
+# test = [2,6,5,9] # 2
+test = [2,3,3,2,4] # 3
 print(Solution().findUnsortedSubarray(test))
